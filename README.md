@@ -1,1 +1,1 @@
-# pygame-template
+# dvd-logo-pygame
