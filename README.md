@@ -1,5 +1,7 @@
 # dvd-logo-pygame
 
+just an example of what you can do with the pygame template
+
 Dependencies:
 
 ```
