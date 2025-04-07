@@ -43,6 +43,7 @@ def main():
         (255, 0, 139)
     ]
     color_index = 0
+    collision_frames = 0
 
     running = True
     while running:
@@ -56,11 +57,18 @@ def main():
 
         if pos_x <= 0 or pos_x + logo_rect.width >= window_size[0]:
             vel_x *= -1
+            collision_frames += 1
             bounce = True
-
-        if pos_y <= 0 or pos_y + logo_rect.height >= window_size[1]:
+        elif pos_y <= 0 or pos_y + logo_rect.height >= window_size[1]:
             vel_y *= -1
+            collision_frames += 1
             bounce = True
+        else:
+            collision_frames = 0
+
+        if collision_frames >= 1:
+            pos_x = max(0, min(pos_x, window_size[0] - logo_rect.width))
+            pos_y = max(0, min(pos_y, window_size[1] - logo_rect.height))
 
         if bounce:
             color_index = (color_index + 1) % len(RAINBOW_COLORS)
